@@ -6,6 +6,7 @@ RUN apk add --no-cache --update ${build_deps} \
   && apk add --no-cache ca-certificates \
   && gem install fluentd --no-document -v "0.14.8" \
   && apk del ${build_deps} \
+  && rm -rf /tmp/* /var/tmp/* /var/cache/apk/* /usr/lib/ruby/gems/*/cache/*.gem \
   && mkdir -p /etc/fluentd/plugins
 
 COPY ./fluentd.conf /etc/fluentd/
